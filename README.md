@@ -1,7 +1,7 @@
 # NSA theme
 This is a very simple but effective (yes, see *Impact*) MDM desktop manager HTML theme that mimics an imaginative login screen of NSA machines (as seen in movies). It works only with the MDM desktop manager for Linux and has almost no controls for switcthing users, sessions, etc. - bare screen with a credentials prompt.
 
-![screenshot.png]
+![NSA theme preview](screenshot.png)
 
 # Installation
 * Download the theme by switching to the "release" branch of this repository or clone the "master" branch and make a zip archive out of this folder.
