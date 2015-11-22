@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--        
+            MDM theme by 0xBADCA7
+            License: MIT
+        -->
+        <meta charset="UTF-8">
+        <title>NSA - MDM HTML Theme</title>
+        
+        <style>
+            html
+            {
+                height: 100%;
+            }
+
+            body
+            {
+                font-family: 'Roboto PragmataPro', 'Condensed', 'Envy Code R';
+                /* 
+                    Roboto fonts are freely available online and can be downloaded
+                    from Google's page. At the time of writing this the correct link
+                    was https://developer.android.com/design/style/typography.html
+                    Make sure you dowload Roboto Condensed and install it on your system.
+                    Pragmata Pro font is equally suggested to be installed, although it's
+                    a paid one. 
+                **/
+
+                background-color: #76bae4;
+                background-image: url('National_Security_Agency.svg');
+                background-repeat: no-repeat;
+                background-position: 15% 50%;
+                background-size: auto 80%;
+                /* 
+                    The NSA seal is accessible at http://commons.wikimedia.org/wiki/File:National_Security_Agency.svg
+                    and is being used according to http://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia
+                **/
+            }
+            
+            #mdm-msg
+            {
+                color: #2A75A0;
+            }
+            
+            #users
+            {
+                left: 60%;
+                top: 45%;
+                position: fixed;
+            }
+            
+            #login-panel
+            {
+                right: 10%;
+                top: 45%;
+                position: fixed;
+                width: 25%;
+                text-align: left;
+            }
+            
+            #okbutton
+            {
+                display: none;
+            }
+            
+            #users,
+            #login-panel
+            {
+                list-style: none;
+            }
+            
+            #entry
+            {
+                padding: 10px 0px;
+                line-height: 24px;
+                font-size: 24px;
+                border: 0;
+                color: #fafafa;
+                width: 100%;
+                outline: 0;
+                background: transparent;
+                border-bottom: 1px solid rgba(250, 250, 250, 0.15);
+                font-family: 'Roboto Condensed', 'PragmataPro', 'Envy Code R';
+            }
+            
+            ::-webkit-input-placeholder
+            {
+                color: rgba(250, 250, 250, 0.33);
+                line-height: 1.35em;
+                font-size: 24px;
+                outline: 0;
+            }
+        </style>
+        
+        <script>
+            function mdm_error(message)
+            {
+                document.getElementById('errtext').innerText = message;
+            }
+            
+            function send_login()
+            {
+                var elem = document.getElementById('entry'),
+                    val = elem.value.trim(),
+                    is_username = elem.getAttribute('type') == 'text' ? true : false;
+                
+                if (is_username)
+                {
+                    alert('USER###' + val);
+                }
+                else
+                {
+                    alert('LOGIN###' + val);
+                }
+            }
+            
+            function mdm_noecho(text)
+            {
+                var elem = document.getElementById('entry');
+                    
+                    elem.value = '';
+                    elem.type = 'password';
+                    elem.title = text.replace(/\W/g, '');
+                    elem.focus();
+            }
+            
+            function mdm_prompt(text)
+            {
+                var elem = document.getElementById('entry'),
+                    val = elem.value.trim();
+                    
+                    elem.value = '';
+                    elem.type = 'text';
+                    elem.title = text.replace(/\W/g, '');
+                    elem.focus();
+            }
+            
+            function mdm_msg(message)
+            {
+                document.getElementById('errtext').innerText = message;
+            }
+            
+            function mdm_disable()
+            {
+                  var entry = document.getElementById('entry');
+                  entry.value = 'disabled';
+                  entry.disabled = 'disabled';
+                  document.getElementById('okbutton').disabled = 'disabled';
+            }
+
+              function mdm_enable()
+              {
+                  var entry = document.getElementById('entry');
+                  entry.value = '';
+                  entry.disabled = false;
+                  document.getElementById('okbutton').disabled = false;
+              }
+
+        </script>
+    </head>
+    
+    <body>
+        
+        <div id="users" class="user_area"></div>
+        
+        <form onSubmit="return send_login();">
+            <ul id="login-panel">
+                <li>
+                    <input type="text" id="entry" placeholder="Access token">
+                </li>
+                <li>
+                    <div id="okbutton" title="$ok_label">$ok_label</div>
+                </li>
+                
+                <li>
+                    <div id="error">
+                        <p id="errtext"></p>
+                    </div>
+                </li>
+                
+                <li>
+                    <div id="mdm-msg">Please identify yourself</div>
+                </li>
+            </ul>
+        
+        </form>
+        
+    </body>
+
+</html>
